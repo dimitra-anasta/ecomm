@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  /* req.body should look like this...
+  /* req.body should look like this... in json in insomnia and wrap key names in double quotes
     {
       product_name: "Basketball",
       price: 200.00,
