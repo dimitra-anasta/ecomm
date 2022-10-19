@@ -37,7 +37,11 @@ router.get('/:id', async (req, res) => {
         model: Tag,
         attributes: ['id','tag_name']
       }]
-    });
+    }); 
+    if (!singleProduct){
+      res.status(404).json({message: 'no product found with that id!'});
+      return;
+    }
     res.status(200).json(singleProduct);
   } catch (err) {
     res.status(500).json(err);
@@ -124,7 +128,7 @@ router.put('/:id', async (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
     const allProducts = await Product.destroy({
